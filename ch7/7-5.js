@@ -1,11 +1,9 @@
 class Person {
   #name;
-  #officeAreaCode;
-  #officeNumber;
+  #telephoneNumber;
   constructor(name, areaCode, number) {
     this.#name = name;
-    this.#officeAreaCode = areaCode;
-    this.#officeNumber = number;
+    this.#telephoneNumber = new TelephoneNumber(areaCode, number);
   }
 
   get name() {
@@ -17,23 +15,26 @@ class Person {
   }
 
   get telephoneNumber() {
-    return `(${this.officeAreaCode}) ${this.officeNumber}`;
+    return this.#telephoneNumber.toString;
+  }
+}
+
+// 전화번호가 별도로 필요하면 사용할 수 있다.
+// 필요한 함수 추가하여 원하는 정보를 얻을 수 있다.
+class TelephoneNumber {
+  #areaCode;
+  #number;
+  constructor(area, number) {
+    this.#areaCode = area;
+    this.#number = number;
   }
 
-  get officeAreaCode() {
-    return this.#officeAreaCode;
+  get areaCode() {
+    return this.#areaCode;
   }
 
-  set officeAreaCode(arg) {
-    this.#officeAreaCode = arg;
-  }
-
-  get officeNumber() {
-    return this.#officeNumber;
-  }
-
-  set officeNumber(arg) {
-    this.#officeNumber = arg;
+  get toString() {
+    return `(${this.#areaCode}) ${this.#number}`;
   }
 }
 

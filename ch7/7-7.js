@@ -10,6 +10,14 @@ class Person {
     return this.#name;
   }
 
+  get manager() {
+    return this.#department.manager;
+  }
+
+  get chargeCode() {
+    return this.#department.chargeCode;
+  }
+
   get department() {
     return this.#department;
   }
@@ -45,6 +53,9 @@ export class Department {
 }
 
 const person = new Person('Tom', new Department('aManager', '999'));
+
+/* // 내부적으로 사용한 정보를 외부에 지나치게 노출
 console.log(person.name);
 console.log(person.department.manager);
 console.log(person.department.chargeCode);
+ */
