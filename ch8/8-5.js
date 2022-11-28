@@ -1,4 +1,7 @@
-let appliesToMass = false;
+/* let appliesToMass = false;
 for (const s of states) {
   if (s === 'MA') appliesToMass = true;
 }
+ */
+
+let appliesToMass = state.includes('MA');
