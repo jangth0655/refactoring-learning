@@ -1,3 +1,7 @@
+/**
+ * 이름을 정확하게 구체적으로 나타내야한다.
+ */
+
 class Organization {
   constructor(data) {
     this._name = data.name;

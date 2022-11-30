@@ -1,3 +1,11 @@
+/**
+ * 값 : 값 자체 불변성을 갖고 있다.
+ * 참조 : 가변성의 특징, (object)
+ * 즉 외부에서 수정가능하다면 위험하다
+ * 따라서 참조를 값처럼 사용하기 즉 새로운 값으로 만들면된다.
+ * 값이 변경되면 새로운 값, 객체를 만든다.
+ */
+
 class Person {
   #name;
   #telephoneNumber;
@@ -23,7 +31,7 @@ class Person {
   }
 
   set officeAreaCode(value) {
-    this.#telephoneNumber.areaCode = value;
+    this.#telephoneNumber = new TelephoneNumber(value, this.officeNumber);
   }
 
   get officeNumber() {
@@ -31,7 +39,7 @@ class Person {
   }
 
   set officeNumber(value) {
-    this.#telephoneNumber.number = value;
+    this.#telephoneNumber = new TelephoneNumber(this.officeAreaCode, value);
   }
 }
 
@@ -46,15 +54,9 @@ class TelephoneNumber {
   get areaCode() {
     return this.#areaCode;
   }
-  set areaCode(arg) {
-    this.#areaCode = arg;
-  }
 
   get number() {
     return this.#number;
-  }
-  set number(arg) {
-    this.#number = arg;
   }
 
   get toString() {
