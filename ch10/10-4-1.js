@@ -1,3 +1,8 @@
+/**
+ * 특정 객체 또는 객체 타입에 따라서 무언가가 일어난다면
+ * 객체를 클래스로 만들어 다형성을 이용하는 것이 좋다.
+ */
+
 export function plumages(birds) {
   let map = birds.map((b) => [b.name, plumage(b)]);
   let map1 = new Map(map);
@@ -6,6 +11,34 @@ export function plumages(birds) {
 export function speeds(birds) {
   return new Map(birds.map((b) => [b.name, airSpeedVelocity(b)]));
 }
+
+class Bird {
+  #name;
+  constructor(name) {
+    this.#name = name;
+  }
+  get plumage() {
+    return 'unknown';
+  }
+  get airSpeedVelocity() {
+    return null;
+  }
+}
+
+class EuropeanSwallow extends Bird {
+  constructor() {
+    super('EuropeanSwallow');
+  }
+
+  get plumage() {
+    return 'average';
+  }
+
+  get airSpeedVelocity() {
+    return 35;
+  }
+}
+
 export function plumage(bird) {
   switch (bird.type) {
     case 'EuropeanSwallow':
