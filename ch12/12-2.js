@@ -1,9 +1,11 @@
-class Employee {}
+/**
+ * 필드도 마찬가지로 항상 공통된 코드가 있다면 수퍼클래스로 올리기
+ */
 
-class Salesperson extends Employee {
+class Employee {
   #name;
 }
 
-class Engineer extends Employee {
-  #name;
-}
+class Salesperson extends Employee {}
+
+class Engineer extends Employee {}
